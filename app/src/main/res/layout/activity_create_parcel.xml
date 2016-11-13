@@ -5,25 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    tools:context="com.example.zsolti.gazdamatek.MainActivity">
-
-    <include layout="@layout/content_main" />
-
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+    tools:context="com.example.zsolti.gazdamatek.CreateParcel">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/createParcel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_white" />
+        app:srcCompat="@drawable/ic_done_white" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/discardParcel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/colorDeny"
+        app:srcCompat="@drawable/ic_clear_white" />
+
+    <include layout="@layout/content_create_parcel" />
 
 </android.support.design.widget.CoordinatorLayout>
