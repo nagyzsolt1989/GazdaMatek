@@ -16,7 +16,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
+        android:inputType="text"
         android:text="Description"
         android:ems="10"
         android:layout_marginTop="30dp"
@@ -36,7 +36,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text="Name"
         android:ems="10"
         android:layout_marginTop="30dp"
@@ -65,7 +65,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="@string/parcel_description"
+        android:text="@string/parcel_plant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/parcelDesc"

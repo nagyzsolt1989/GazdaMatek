@@ -5,5 +5,5 @@
     <string name="title_activity_create_parcel">CreateParcel</string>
     <string name="parcel_name">Tábla Neve</string>
     <string name="parcel_area">Terület</string>
-    <string name="parcel_description">Tábla Leírás</string>
+    <string name="parcel_plant">Vetemény</string>
 </resources>
