@@ -3,20 +3,18 @@ package com.example.zsolti.gazdamatek;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import static java.lang.Boolean.FALSE;
 
 public class MainActivity extends ListActivity{
 
@@ -71,14 +69,54 @@ public class MainActivity extends ListActivity{
         }
 
 */
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //ADD NEW PARCEL SUB BUTTON
+
+        FloatingActionButton actionAddParcel = new FloatingActionButton(getBaseContext());
+        actionAddParcel.setTitle("Új Tábla");
+        actionAddParcel.setColorNormalResId(R.color.darkgreen);
+        actionAddParcel.setIcon(R.drawable.icon_add_new_parcel_white);
+        actionAddParcel.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,CreateParcel.class);
                 startActivityForResult(i, 1);
             }
         });
+
+        //ADD NEW INCOME SUB BUTTON
+
+        FloatingActionButton actionAddIncome = new FloatingActionButton(getBaseContext());
+        actionAddIncome.setTitle("Új Bevétel");
+        actionAddIncome.setIcon(R.drawable.icon_add_new_income_white);
+        actionAddIncome.setColorNormalResId(R.color.darkgreen);
+        actionAddIncome.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Add new Income button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //ADD NEW OUTCOME SUB BUTTON
+
+        FloatingActionButton actionAddOutcome = new FloatingActionButton(getBaseContext());
+        actionAddOutcome.setTitle("Új Kiadás");
+        actionAddOutcome.setIcon(R.drawable.icon_add_new_outcome_white);
+        actionAddOutcome.setColorNormalResId(R.color.darkgreen);
+        actionAddOutcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Add new Outcome button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //MAIN FLOATING ACTION BUTTON
+
+        final FloatingActionsMenu menuMultipleActions = (FloatingActionsMenu) findViewById(R.id.main_fab);
+        menuMultipleActions.addButton(actionAddParcel);
+        menuMultipleActions.addButton(actionAddIncome);
+        menuMultipleActions.addButton(actionAddOutcome);
 
     }
 

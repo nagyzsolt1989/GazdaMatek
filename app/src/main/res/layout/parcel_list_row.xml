@@ -4,12 +4,12 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         app:srcCompat="@drawable/ic_my_location_black_18dp"
         android:layout_below="@+id/TextView1"
         android:layout_alignStart="@+id/TextView1"
-        android:id="@+id/imageView1" />
+        android:id="@+id/imageView1"/>
 
     <TextView
         android:text="167,25"
@@ -62,8 +62,8 @@
         android:id="@+id/textView6" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         app:srcCompat="@drawable/ic_local_florist_black_18dp"
         android:id="@+id/imageView2"
         android:layout_below="@+id/TextView1"
@@ -71,8 +71,8 @@
         android:layout_marginStart="12dp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         app:srcCompat="@drawable/ic_euro_symbol_black_18dp"
         android:id="@+id/imageView3"
         android:layout_alignTop="@+id/imageView2"

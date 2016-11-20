@@ -57,6 +57,9 @@ public class ParcelAdapter extends BaseAdapter {
         //ROW CONTAINS A REF TO PARCEL_LIST_ROW'S RELATIVELAYOUT
         View row = inflater.inflate(R.layout.parcel_list_row, viewgroup, false);
 
+        //SET THE MINIMUM HEIGHT OF EACH ROW
+        row.setMinimumHeight(250);
+
         TextView title = (TextView) row.findViewById(R.id.TextView1);
         ImageView area_icon = (ImageView) row.findViewById(R.id.imageView1);
         TextView area_value = (TextView) row.findViewById(R.id.textView2);
@@ -70,12 +73,12 @@ public class ParcelAdapter extends BaseAdapter {
         Parcel temp = list.get(position);
 
         title.setText(temp.getName());
-        area_icon.setImageResource(R.drawable.ic_my_location_black_18dp);
+        area_icon.setImageResource(R.drawable.icon_add_new_parcel);
         area_value.setText(temp.getArea());
         area_unit.setText("ha");
         plant_icon.setImageResource(R.drawable.ic_local_florist_black_18dp);
         plant.setText(temp.getPlant());
-        money_icon.setImageResource(R.drawable.ic_euro_symbol_black_18dp);
+        money_icon.setImageResource(R.drawable.icon_money_balance);
         money_value.setText("0.0");
         money_currency.setText("Ft");
 
