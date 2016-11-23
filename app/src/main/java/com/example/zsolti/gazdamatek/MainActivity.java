@@ -8,13 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-
 import java.util.ArrayList;
 
-import static java.lang.Boolean.FALSE;
 
 public class MainActivity extends ListActivity{
 
@@ -71,11 +68,13 @@ public class MainActivity extends ListActivity{
 */
         //ADD NEW PARCEL SUB BUTTON
 
-        FloatingActionButton actionAddParcel = new FloatingActionButton(getBaseContext());
-        actionAddParcel.setTitle("Új Tábla");
-        actionAddParcel.setColorNormalResId(R.color.darkgreen);
-        actionAddParcel.setIcon(R.drawable.icon_add_new_parcel_white);
-        actionAddParcel.setOnClickListener(new View.OnClickListener()
+        FloatingActionButton actionAddLand = new FloatingActionButton(getBaseContext());
+
+        actionAddLand.setTitle(getString(R.string.action_addland));
+        actionAddLand.setColorNormalResId(R.color.darkgreen);
+        actionAddLand.setIcon(R.drawable.icon_add_new_parcel_white);
+
+        actionAddLand.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
@@ -87,9 +86,11 @@ public class MainActivity extends ListActivity{
         //ADD NEW INCOME SUB BUTTON
 
         FloatingActionButton actionAddIncome = new FloatingActionButton(getBaseContext());
-        actionAddIncome.setTitle("Új Bevétel");
+
+        actionAddIncome.setTitle(getString(R.string.action_addincome));
         actionAddIncome.setIcon(R.drawable.icon_add_new_income_white);
         actionAddIncome.setColorNormalResId(R.color.darkgreen);
+
         actionAddIncome.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -101,9 +102,11 @@ public class MainActivity extends ListActivity{
         //ADD NEW OUTCOME SUB BUTTON
 
         FloatingActionButton actionAddOutcome = new FloatingActionButton(getBaseContext());
-        actionAddOutcome.setTitle("Új Kiadás");
+
+        actionAddOutcome.setTitle(getString(R.string.action_addoutcome));
         actionAddOutcome.setIcon(R.drawable.icon_add_new_outcome_white);
         actionAddOutcome.setColorNormalResId(R.color.darkgreen);
+
         actionAddOutcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,16 +117,29 @@ public class MainActivity extends ListActivity{
         //MAIN FLOATING ACTION BUTTON
 
         final FloatingActionsMenu menuMultipleActions = (FloatingActionsMenu) findViewById(R.id.main_fab);
-        menuMultipleActions.addButton(actionAddParcel);
+
+        menuMultipleActions.addButton(actionAddLand);
         menuMultipleActions.addButton(actionAddIncome);
         menuMultipleActions.addButton(actionAddOutcome);
 
-    }
+        //DIM BACKGROUND WHEN FLOATING ACTION MENU EXPANDED
 
-    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
-    public void addItems(View v) {
-        //parcelListItems.add("Clicked : "+clickCounter++);
-        //adapter.notifyDataSetChanged();
+        final View dimmedBackground = findViewById(R.id.dimmedBackground);
+
+        menuMultipleActions.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded()
+            {
+                dimmedBackground.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onMenuCollapsed()
+            {
+                dimmedBackground.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     @Override

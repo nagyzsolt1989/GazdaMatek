@@ -6,4 +6,10 @@
     <string name="parcel_name">Tábla Neve</string>
     <string name="parcel_area">Terület</string>
     <string name="parcel_plant">Vetemény</string>
+    <string name="action_addland">Új Tábla</string>
+    <string name="action_addincome">Új Bevétel</string>
+    <string name="action_addoutcome">Új Kiadás</string>
+    <string name="default_description">Description</string>
+    <string name="default_area">Area</string>
+    <string name="default_name">Name</string>
 </resources>
