@@ -14,17 +14,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
+
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements OnLandChangedListener
 {
 
+    private FABToolbarLayout layout;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
 
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements OnLandChangedList
     //LISTVIEW TO DISPLAY LIST
     ListView listView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +52,6 @@ public class MainActivity extends AppCompatActivity implements OnLandChangedList
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if(parcelListItems.size() > 0) {
-            listView = (ListView) findViewById( android.R.id.list );
-            //adapter = new ParcelAdapter(this, parcelListItems);
-            listView.setAdapter(new ParcelAdapter(this, parcelListItems));
-            //listView.setAdapter(adapter);
-            //adapter.notifyDataSetChanged();
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements OnLandChangedList
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        layout = (FABToolbarLayout) findViewById(R.id.fabtoolbar);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
 /*
@@ -139,6 +140,22 @@ public class MainActivity extends AppCompatActivity implements OnLandChangedList
         menuMultipleActions.addButton(actionAddIncome);
         menuMultipleActions.addButton(actionAddOutcome);
 
+        if(parcelListItems.size() > 0) {
+            listView = (ListView) findViewById( android.R.id.list );
+            //adapter = new ParcelAdapter(this, parcelListItems);
+            listView.setAdapter(new ParcelAdapter(this, parcelListItems));
+            //listView.setAdapter(adapter);
+            //adapter.notifyDataSetChanged();
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    layout.show();
+                }
+            });
+        }
+
+
         //DIM BACKGROUND WHEN FLOATING ACTION MENU EXPANDED
 
         final View dimmedBackground = findViewById(R.id.dimmedBackground);
@@ -157,6 +174,11 @@ public class MainActivity extends AppCompatActivity implements OnLandChangedList
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        layout.hide();
     }
 
     @Override
